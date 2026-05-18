@@ -1,0 +1,2204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="color-scheme" content="dark">
+<title>Survey Kelompok 2 · Identifikasi Performa Akademik Mahasiswa Binus yang Berkuliah Sambil Bekerja</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Sleek matte-black dark palette · Instrument Sans · white primary */
+  --bg:        #0a0a0a;
+  --bg-2:      #111113;
+  --surface:   #141417;
+  --surface2:  #1a1a1d;
+  --border:    #27272a;
+  --border-2:  #3f3f46;
+  --ink:       #fafafa;
+  --ink2:      #a1a1aa;
+  --ink3:      #71717a;
+  --ink4:      #52525b;
+  --accent:    #fafafa;
+  --accent-lt: rgba(250, 250, 250, 0.06);
+  --accent-dk: #ffffff;
+  --green:     #4ade80;
+  --green-lt:  rgba(74, 222, 128, 0.10);
+  --red:       #f87171;
+  --red-lt:    rgba(248, 113, 113, 0.10);
+  --highlight: rgba(255, 224, 102, 0.30);
+  --r:         16px;
+  --r-md:      12px;
+  --r-sm:      8px;
+  --sh-xs:     0 1px 2px rgba(0, 0, 0, 0.4);
+  --sh:        0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  --sh-md:     0 4px 16px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  --sh-lg:     0 16px 48px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.4);
+  --ring:      0 0 0 3px rgba(250, 250, 250, 0.10);
+  --font-sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  font-feature-settings: 'ss02';
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 224, 102, 0.05), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(120, 130, 200, 0.04), transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+input, textarea, select, button { font-family: inherit; }
+::selection { background: var(--ink); color: var(--bg); }
+
+.wrap {
+  position: relative; z-index: 1;
+  max-width: 720px; margin: 0 auto;
+  padding: 56px 24px 100px;
+}
+
+/* HEADER */
+.header { margin-bottom: 36px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 11px; font-weight: 400; letter-spacing: .02em; text-transform: uppercase;
+  color: var(--ink3); margin-bottom: 22px;
+  padding: 5px 10px; border: 1px solid var(--border); border-radius: 100px;
+  background: var(--surface);
+}
+h1 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.85rem, 5vw, 2.6rem);
+  font-weight: 500; line-height: 1.1; letter-spacing: -.035em;
+  color: var(--ink); margin-bottom: 18px;
+}
+h1 em { font-style: italic; font-weight: 500; background: linear-gradient(180deg, transparent 60%, var(--highlight) 60%); padding: 0 2px; }
+.header-desc-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: transparent; border: 1px solid var(--border); border-radius: 100px;
+  padding: 5px 12px; cursor: pointer;
+  font-family: var(--font-sans); font-size: 11.5px; font-weight: 500;
+  color: var(--ink3); letter-spacing: .02em;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.header-desc-toggle:hover { color: var(--ink); border-color: var(--border-2); background: var(--surface); }
+.header-desc-toggle svg {
+  width: 11px; height: 11px;
+  fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  transition: transform .2s;
+}
+.header-desc-toggle.expanded svg { transform: rotate(180deg); }
+.header-desc {
+  font-size: 13.5px; color: var(--ink2); line-height: 1.7; max-width: 620px;
+  letter-spacing: -.005em; margin-top: 14px;
+  overflow: hidden;
+}
+.header-desc.collapsed { display: none; }
+.header-desc p { margin-bottom: 12px; }
+.header-desc p:last-child { margin-bottom: 0; }
+
+/* PROGRESS (top) */
+.progress-top { margin-bottom: 28px; }
+.progress-top-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-sans);
+  font-size: 11px; font-weight: 400; letter-spacing: .02em;
+  color: var(--ink3); text-transform: uppercase; margin-bottom: 10px;
+}
+.progress-top-track {
+  height: 3px; background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 100px; overflow: hidden;
+}
+.progress-top-fill {
+  height: 100%; background: var(--ink); border-radius: 100px;
+  transition: width .35s cubic-bezier(.2, .8, .2, 1);
+}
+
+/* CARD */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r); box-shadow: var(--sh); overflow: hidden;
+  margin-bottom: 16px; animation: panelIn .25s cubic-bezier(.2,.8,.2,1);
+}
+@keyframes panelIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.card-head {
+  padding: 22px 26px 18px; background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.card-head-title {
+  font-size: 17px; font-weight: 500; color: var(--ink); line-height: 1.3;
+  letter-spacing: -.022em;
+}
+.card-head-help {
+  font-size: 13px; color: var(--ink2); line-height: 1.6; margin-top: 12px;
+  white-space: pre-wrap; letter-spacing: -.005em;
+}
+.card-body { padding: 26px; }
+
+/* QUESTION */
+.q { margin-bottom: 28px; }
+.q:last-child { margin-bottom: 0; }
+.q-title {
+  font-size: 13.5px; font-weight: 500; color: var(--ink); line-height: 1.55;
+  margin-bottom: 14px; white-space: pre-wrap; letter-spacing: -.01em;
+}
+.q-title .req { color: var(--red); margin-left: 3px; font-weight: 500; }
+.q-help { font-size: 12px; color: var(--ink3); margin-top: -8px; margin-bottom: 14px; line-height: 1.55; }
+.q-err {
+  font-size: 12.5px; color: var(--red); font-weight: 500;
+  margin-top: 8px; display: none;
+  display: none; align-items: center; gap: 6px;
+}
+.q-err.show { display: flex; }
+.q-err::before { content: '!'; display: inline-flex; align-items: center; justify-content: center;
+  width: 14px; height: 14px; background: var(--red); color: var(--surface);
+  border-radius: 50%; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+
+/* TEXT / TEXTAREA */
+.txt-inp, .txt-area {
+  width: 100%; padding: 11px 14px;
+  font-family: var(--font-sans); font-size: 14.5px; font-weight: 400; color: var(--ink);
+  background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--r-sm);
+  outline: none; transition: border-color .15s, box-shadow .15s, background .15s;
+  letter-spacing: -.005em;
+}
+.txt-area { resize: vertical; min-height: 100px; font-size: 14px; line-height: 1.6; }
+.txt-inp::placeholder, .txt-area::placeholder { color: var(--ink4); font-weight: 400; }
+.txt-inp:hover, .txt-area:hover { border-color: var(--border-2); background: var(--surface); }
+.txt-inp:focus, .txt-area:focus {
+  border-color: var(--ink); box-shadow: var(--ring); background: var(--surface);
+}
+.txt-inp.invalid, .txt-area.invalid { border-color: var(--red); box-shadow: 0 0 0 3px rgba(248, 113, 113, .10); }
+
+/* RADIO LIST */
+.opt-list { display: flex; flex-direction: column; gap: 6px; }
+.opt {
+  position: relative;
+}
+.opt input[type=radio] { position: absolute; opacity: 0; width: 0; height: 0; }
+.opt-lbl {
+  display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+  border: 1px solid var(--border); border-radius: var(--r-sm);
+  cursor: pointer; transition: border-color .15s, background .15s;
+  background: var(--bg-2);
+  font-family: var(--font-sans);
+  font-size: 14px; line-height: 1.5; color: var(--ink); font-weight: 400;
+  letter-spacing: -.005em;
+}
+.opt-lbl:hover { border-color: var(--border-2); background: var(--surface); }
+.opt input[type=radio]:checked + .opt-lbl {
+  border-color: var(--ink); background: var(--surface);
+  box-shadow: var(--ring);
+  font-weight: 500;
+}
+.opt-radio {
+  width: 16px; height: 16px; border: 1.5px solid var(--border-2); border-radius: 50%;
+  flex-shrink: 0; position: relative; transition: border-color .15s;
+  background: var(--bg);
+}
+.opt-radio::after {
+  content: ''; position: absolute; inset: 3px;
+  background: var(--ink); border-radius: 50%;
+  transform: scale(0); transition: transform .15s cubic-bezier(.2,.8,.2,1);
+}
+.opt input[type=radio]:checked + .opt-lbl .opt-radio { border-color: var(--ink); }
+.opt input[type=radio]:checked + .opt-lbl .opt-radio::after { transform: scale(1); }
+
+/* OTHER inline input */
+.other-wrap {
+  margin-top: 8px;
+  padding-left: 30px;
+  display: none;
+  animation: panelIn .22s ease;
+}
+.other-wrap.show { display: block; }
+.other-inp {
+  width: 100%; padding: 10px 12px;
+  font-family: var(--font-sans); font-size: 14px; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm);
+  outline: none; transition: border-color .15s, box-shadow .15s;
+}
+.other-inp::placeholder { color: var(--ink4); }
+.other-inp:focus {
+  border-color: var(--ink); box-shadow: var(--ring);
+}
+.other-inp.invalid { border-color: var(--red); box-shadow: 0 0 0 3px rgba(153, 27, 27, .08); }
+
+/* QUESTION PICKER (feedback) — trigger + popup */
+.qp-trigger {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 12px 14px; cursor: pointer;
+  background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--r-sm);
+  font-family: var(--font-sans); font-size: 13.5px; color: var(--ink); font-weight: 400;
+  letter-spacing: -.005em; transition: border-color .15s, background .15s;
+  text-align: left;
+}
+.qp-trigger:hover { border-color: var(--border-2); background: var(--surface); }
+.qp-trigger.has-picks { border-color: var(--ink); }
+.qp-trigger.invalid { border-color: var(--red); box-shadow: 0 0 0 3px rgba(248, 113, 113, .10); }
+.qp-trigger-text { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink2); }
+.qp-trigger.has-picks .qp-trigger-text { color: var(--ink); }
+.qp-trigger-count {
+  flex-shrink: 0; padding: 2px 8px; border-radius: 100px;
+  background: var(--ink); color: var(--bg);
+  font-size: 11px; font-weight: 500; letter-spacing: -.005em;
+}
+.qp-trigger-chev {
+  flex-shrink: 0; width: 14px; height: 14px;
+  fill: none; stroke: var(--ink3); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.qp-modal {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r);
+  width: 100%; max-width: 560px; max-height: 84vh;
+  display: flex; flex-direction: column; overflow: hidden;
+  box-shadow: var(--sh-lg); animation: panelIn .25s cubic-bezier(.2,.8,.2,1);
+}
+.qp-modal-head {
+  padding: 22px 24px 12px; border-bottom: 1px solid var(--border);
+}
+.qp-modal-title {
+  font-size: 16px; font-weight: 500; color: var(--ink); letter-spacing: -.018em;
+  margin-bottom: 6px;
+}
+.qp-modal-help {
+  font-size: 13px; color: var(--ink2); line-height: 1.55; letter-spacing: -.005em;
+}
+.qp-modal-body {
+  flex: 1; overflow-y: auto; padding: 14px 18px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.qp-modal-foot {
+  padding: 14px 18px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: var(--bg-2);
+}
+.qp-modal-counter {
+  font-size: 12px; color: var(--ink3); letter-spacing: -.005em;
+}
+.qp-modal-clear {
+  background: transparent; border: none; color: var(--ink3);
+  font-family: var(--font-sans); font-size: 12.5px; cursor: pointer;
+  text-decoration: underline; padding: 0; transition: color .12s;
+}
+.qp-modal-clear:hover { color: var(--ink); }
+.qp-modal-done {
+  padding: 10px 20px; background: var(--ink); color: var(--bg); border: 1px solid var(--ink);
+  border-radius: var(--r-sm); font-family: var(--font-sans); font-size: 13.5px; font-weight: 500;
+  cursor: pointer; transition: background .15s;
+}
+.qp-modal-done:hover { background: var(--accent-dk); }
+
+/* picker rows (used inside the modal body) */
+.qp-section { display: flex; flex-direction: column; gap: 2px; }
+.qp-section-title {
+  font-family: var(--font-sans);
+  font-size: 11px; font-weight: 500; color: var(--ink3);
+  letter-spacing: .04em; text-transform: uppercase;
+  padding: 0 4px 6px; border-bottom: 1px solid var(--border); margin-bottom: 4px;
+}
+.qp-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 8px; border-radius: 6px; transition: background .12s;
+  cursor: pointer;
+}
+.qp-row:hover { background: var(--surface); }
+.qp-row.selected { background: var(--surface); }
+.qp-cb-input { position: absolute; opacity: 0; width: 0; height: 0; }
+.qp-cb {
+  flex-shrink: 0; width: 16px; height: 16px;
+  border: 1.5px solid var(--border-2); border-radius: 4px;
+  background: var(--bg); position: relative; transition: all .12s;
+  margin-top: 1px;
+}
+.qp-cb svg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  fill: none; stroke: var(--bg); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0; transform: scale(.6); transition: all .15s;
+}
+.qp-row.selected .qp-cb { background: var(--ink); border-color: var(--ink); }
+.qp-row.selected .qp-cb svg { opacity: 1; transform: scale(1); }
+.qp-text-wrap { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.qp-label {
+  font-size: 13px; line-height: 1.45; color: var(--ink); font-weight: 400;
+  letter-spacing: -.005em;
+}
+.qp-reason-input {
+  width: 100%; padding: 8px 10px;
+  font-family: var(--font-sans); font-size: 12.5px; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+  outline: none; transition: border-color .12s, box-shadow .12s;
+}
+.qp-reason-input::placeholder { color: var(--ink4); }
+.qp-reason-input:focus { border-color: var(--ink); box-shadow: var(--ring); }
+
+/* SCALE — Google Forms-style Likert radio buttons */
+.scale-wrap {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm);
+  padding: 22px 22px 18px;
+}
+.scale-value-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-bottom: 18px;
+}
+.scale-value-label {
+  font-family: var(--font-sans);
+  font-size: 10.5px; font-weight: 500; color: var(--ink3);
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.scale-chip {
+  font-family: var(--font-sans);
+  font-size: 13px; font-weight: 500; color: var(--ink);
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 100px; padding: 5px 14px; text-align: center;
+  letter-spacing: .02em;
+  font-variant-numeric: tabular-nums;
+}
+.scale-chip .num { font-size: 16px; font-weight: 600; margin-right: 2px; }
+.scale-chip.empty { color: var(--ink4); }
+.scale-chip.empty .num { color: var(--ink4); }
+
+.scale-options {
+  display: flex; gap: 4px; margin: 8px 0 14px;
+}
+.scale-opt {
+  flex: 1; position: relative;
+}
+.scale-opt input[type=radio] { position: absolute; opacity: 0; width: 0; height: 0; }
+.scale-opt-lbl {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 12px 6px 10px; cursor: pointer; border-radius: 8px;
+  border: 1px solid transparent;
+  transition: background .12s, border-color .12s;
+}
+.scale-opt-lbl:hover { background: var(--bg-2); }
+.scale-opt-num {
+  font-family: var(--font-sans); font-size: 13px; font-weight: 500; color: var(--ink2);
+  font-variant-numeric: tabular-nums;
+  transition: color .12s, font-weight .12s;
+}
+.scale-opt-radio {
+  width: 22px; height: 22px; border: 1.5px solid var(--border-2); border-radius: 50%;
+  background: var(--bg); position: relative; transition: border-color .15s;
+}
+.scale-opt-radio::after {
+  content: ''; position: absolute; inset: 4px;
+  background: var(--ink); border-radius: 50%;
+  transform: scale(0); transition: transform .15s cubic-bezier(.2,.8,.2,1);
+}
+.scale-opt input[type=radio]:checked + .scale-opt-lbl {
+  background: var(--bg-2); border-color: var(--border);
+}
+.scale-opt input[type=radio]:checked + .scale-opt-lbl .scale-opt-radio { border-color: var(--ink); }
+.scale-opt input[type=radio]:checked + .scale-opt-lbl .scale-opt-radio::after { transform: scale(1); }
+.scale-opt input[type=radio]:checked + .scale-opt-lbl .scale-opt-num { color: var(--ink); font-weight: 600; }
+
+.scale-labels {
+  display: flex; justify-content: space-between; gap: 12px;
+  margin-top: 12px; font-size: 11.5px; color: var(--ink3); font-weight: 500;
+  letter-spacing: 0; line-height: 1.4;
+}
+.scale-labels span { max-width: 48%; }
+.scale-labels span:last-child { text-align: right; }
+
+/* B2 COMBOBOX */
+.combo-wrap { position: relative; }
+.combo-input-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.combo-input {
+  flex: 1 1 200px; min-width: 0; padding: 12px 14px;
+  font-family: var(--font-sans); font-size: 14.5px; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm);
+  outline: none; transition: border-color .15s, box-shadow .15s;
+}
+.combo-input::placeholder { color: var(--ink4); }
+.combo-input:hover { border-color: var(--border-2); }
+.combo-input:focus {
+  border-color: var(--ink); box-shadow: var(--ring);
+}
+.combo-input.invalid { border-color: var(--red); box-shadow: 0 0 0 3px rgba(153, 27, 27, .08); }
+.combo-toggle {
+  padding: 0 14px; background: var(--surface); color: var(--ink2);
+  border: 1px solid var(--border); border-radius: var(--r-sm);
+  font-family: var(--font-sans);
+  font-size: 11.5px; font-weight: 500; cursor: pointer; white-space: nowrap;
+  letter-spacing: .02em;
+  transition: all .15s;
+}
+.combo-toggle:hover { background: var(--bg-2); border-color: var(--border-2); color: var(--ink); }
+.combo-toggle.active { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.combo-list {
+  margin-top: 8px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-sm); max-height: 280px; overflow-y: auto;
+  display: none; box-shadow: var(--sh-md);
+}
+.combo-list.show { display: block; }
+.combo-item {
+  padding: 11px 14px; cursor: pointer; transition: background .1s;
+  font-size: 14px; color: var(--ink); border-bottom: 1px solid var(--border);
+}
+.combo-item:last-child { border-bottom: none; }
+.combo-item:hover, .combo-item.highlight { background: var(--bg-2); }
+.combo-item.selected { background: var(--ink); color: var(--surface); font-weight: 500; }
+.combo-item.empty { color: var(--ink3); cursor: default; font-style: italic; padding: 14px; }
+.combo-item.empty:hover { background: var(--surface); }
+.combo-hint {
+  font-size: 12px; color: var(--ink3); margin-top: 8px; line-height: 1.5;
+}
+
+/* NAV BUTTONS */
+.step-actions { display: flex; gap: 10px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); }
+.btn-nav {
+  flex: 1; padding: 12px 18px;
+  border-radius: var(--r-sm); font-family: var(--font-sans);
+  font-size: 14px; font-weight: 500; cursor: pointer;
+  transition: background .15s, border-color .15s, transform .12s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  letter-spacing: -.005em;
+}
+.btn-back {
+  background: var(--bg-2); color: var(--ink);
+  border: 1px solid var(--border);
+}
+.btn-back:hover { background: var(--surface); border-color: var(--border-2); }
+.btn-next {
+  background: var(--ink); color: var(--bg); border: 1px solid var(--ink);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .04) inset;
+}
+.btn-next:hover { background: var(--accent-dk); }
+.btn-next:active { transform: scale(.98); }
+.btn-next:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+.btn-submit {
+  flex: 2; padding: 14px 20px;
+  background: var(--ink); color: var(--bg); border: 1px solid var(--ink);
+  border-radius: var(--r-sm); font-family: var(--font-sans);
+  font-size: 15px; font-weight: 500; cursor: pointer;
+  transition: background .18s, transform .12s;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .04) inset;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  letter-spacing: -.005em;
+}
+.btn-submit:hover { background: var(--accent-dk); }
+.btn-submit:active { transform: scale(.99); }
+.btn-submit:disabled { opacity: .4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(10, 10, 10, 0.45); backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center;
+  z-index: 2000; padding: 20px;
+}
+.modal-overlay.show { display: flex; animation: fadeIn .2s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r);
+  max-width: 440px; width: 100%; padding: 32px 28px 24px; text-align: left;
+  box-shadow: var(--sh-lg); animation: panelIn .3s cubic-bezier(.2,.8,.2,1);
+}
+.modal-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; margin-bottom: 16px;
+  background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px;
+  font-size: 18px;
+}
+.modal-title { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 8px; letter-spacing: -.018em; }
+.modal-text { font-size: 13px; color: var(--ink2); line-height: 1.6; margin-bottom: 22px; letter-spacing: -.005em; }
+.modal-btn-row { display: flex; gap: 8px; }
+.modal-btn {
+  flex: 1; padding: 10px 16px;
+  background: var(--ink); color: var(--bg); border: 1px solid var(--ink);
+  border-radius: var(--r-sm); font-weight: 500; cursor: pointer;
+  transition: background .15s, transform .12s;
+  font-family: var(--font-sans); font-size: 14px; letter-spacing: -.005em;
+}
+.modal-btn:hover { background: var(--accent-dk); }
+.modal-btn:active { transform: scale(.98); }
+.modal-btn.secondary {
+  background: var(--bg-2); color: var(--ink); border: 1px solid var(--border);
+}
+.modal-btn.secondary:hover { background: var(--surface); border-color: var(--border-2); }
+
+/* SCREEN-OUT */
+.screenout {
+  display: none; min-height: 60vh;
+  align-items: center; justify-content: center; flex-direction: column;
+  text-align: center; padding: 40px 20px;
+  animation: panelIn .5s cubic-bezier(.2,.8,.2,1);
+}
+.screenout.show { display: flex; }
+.screenout-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; margin-bottom: 22px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  font-size: 22px; box-shadow: var(--sh-md);
+  font-family: var(--font-sans);
+}
+.screenout-title {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 500; color: var(--ink); margin-bottom: 14px; letter-spacing: -.03em;
+}
+.screenout-text {
+  font-family: var(--font-sans);
+  font-size: 14.5px; color: var(--ink2); max-width: 500px;
+  line-height: 1.65; margin-bottom: 28px; letter-spacing: -.005em;
+}
+
+/* PROGRESS BAR */
+.progress-wrap {
+  margin-top: 16px; animation: panelIn .3s ease;
+}
+.progress-row {
+  display: flex; justify-content: space-between; margin-bottom: 8px;
+  font-family: var(--font-sans);
+  font-size: 11.5px; font-weight: 500; color: var(--ink2); letter-spacing: .02em;
+}
+.progress-bar-bg {
+  height: 4px; background: var(--bg-2); border-radius: 100px;
+  overflow: hidden; border: 1px solid var(--border);
+}
+.progress-bar-fg {
+  width: 0%; height: 100%; background: var(--ink);
+  transition: width .5s cubic-bezier(.2,.8,.2,1);
+}
+
+/* spinner */
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* HONEYPOT */
+.hp { position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none; }
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .wrap { padding: 32px 16px 80px; }
+  h1 { font-size: 1.7rem; letter-spacing: -.03em; }
+  .header-desc { font-size: 14px; }
+  .header { margin-bottom: 28px; }
+  .progress-top { margin-bottom: 22px; }
+  .progress-top-row { font-size: 10.5px; margin-bottom: 8px; }
+
+  .card-head { padding: 20px 20px 16px; }
+  .card-head-title { font-size: 17px; }
+  .card-body { padding: 20px; }
+  .q { margin-bottom: 24px; }
+  .opt-lbl { padding: 12px 14px; font-size: 14px; }
+  .scale-wrap { padding: 18px 16px 14px; }
+  .scale-chip { font-size: 12px; padding: 5px 12px; }
+  .scale-chip .num { font-size: 15px; }
+
+  .step-actions { flex-direction: column-reverse; }
+  .btn-nav, .btn-submit { width: 100%; }
+  .btn-submit { flex: 1; }
+  .modal-card { padding: 26px 22px 22px; }
+
+  /* Combobox: stack toggle below input on small screens so it never overflows */
+  .combo-toggle { width: 100%; padding: 10px 14px; }
+
+  /* Question-picker modal footer: stack vertically and let buttons span full width */
+  .qp-modal { max-height: 90vh; }
+  .qp-modal-foot { flex-direction: column; align-items: stretch; gap: 8px; }
+  .qp-modal-foot > span { display: flex; gap: 10px; align-items: center; justify-content: space-between; }
+  .qp-modal-counter { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- Honeypot field (must remain empty; bots will fill it). Outside of the rendered form. -->
+<input type="text" class="hp" id="hp_field" tabindex="-1" autocomplete="off" name="hp_website" aria-hidden="true">
+
+<div id="app-container">
+  <div class="wrap">
+
+    <header class="header">
+      <div class="eyebrow">DTSC6011001 / KELOMPOK 2 / 2025-2026</div>
+      <h1>Identifikasi Performa Akademik Mahasiswa Binus yang <em>Berkuliah Sambil Bekerja</em></h1>
+      <button type="button" class="header-desc-toggle" id="header-desc-toggle" aria-expanded="false" aria-controls="header-desc">
+        <span class="header-desc-toggle-text">Tampilkan info survei</span>
+        <svg viewBox="0 0 12 12"><polyline points="3 4.5 6 8 9 4.5"/></svg>
+      </button>
+      <div class="header-desc collapsed" id="header-desc" aria-hidden="true"></div>
+    </header>
+
+    <div id="progress-top" class="progress-top"></div>
+
+    <div id="screenout" class="screenout">
+      <div class="screenout-icon">🙏</div>
+      <div class="screenout-title" id="screenout-title">Terima Kasih</div>
+      <div class="screenout-text" id="screenout-text"></div>
+    </div>
+
+    <div id="step-host"></div>
+
+  </div>
+</div>
+
+<!-- Draft restore modal -->
+<div id="draft-modal" class="modal-overlay">
+  <div class="modal-card">
+    <span class="modal-icon">💾</span>
+    <div class="modal-title">Lanjutkan Jawaban Sebelumnya?</div>
+    <div class="modal-text">
+      Kami menyimpan jawaban Anda secara lokal di browser ini. Lanjutkan dari tempat Anda berhenti, atau mulai dari awal?
+    </div>
+    <div class="modal-btn-row">
+      <button class="modal-btn secondary" id="draft-discard">Mulai Dari Awal</button>
+      <button class="modal-btn" id="draft-continue">Lanjutkan</button>
+    </div>
+  </div>
+</div>
+
+<!-- Generic alert modal -->
+<div id="alert-modal" class="modal-overlay">
+  <div class="modal-card">
+    <span class="modal-icon" id="alert-icon">⚠️</span>
+    <div class="modal-title" id="alert-title">Perhatian</div>
+    <div class="modal-text" id="alert-text"></div>
+    <div class="modal-btn-row">
+      <button class="modal-btn" id="alert-ok">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- Question-picker popup (FB1/FB2/FB3 detail) -->
+<div id="qp-modal-overlay" class="modal-overlay">
+  <div class="qp-modal">
+    <div class="qp-modal-head">
+      <div class="qp-modal-title" id="qp-modal-title"></div>
+      <div class="qp-modal-help" id="qp-modal-help"></div>
+    </div>
+    <div class="qp-modal-body" id="qp-modal-body"></div>
+    <div class="qp-modal-foot">
+      <span class="qp-modal-counter" id="qp-modal-counter">0 dipilih</span>
+      <span style="display:flex; gap:14px; align-items:center;">
+        <button type="button" class="qp-modal-clear" id="qp-modal-clear">Hapus pilihan</button>
+        <button type="button" class="qp-modal-done" id="qp-modal-done">Selesai</button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+/* ─────────────────────────────────────────────────────────────────────────
+   FORM DEFINITION
+   ──────────────────────────────────────────────────────────────────────── */
+
+const HEADER_DESC = `Yth. Responden,
+
+Survei ini dilakukan oleh mahasiswa Data Science Kelompok 2 pada kelas dan sebagai bagian dari mata kuliah Survey and Sampling Methods (DTSC6011001), Tahun Akademik 2025/2026. Survei ini bertujuan untuk memahami bagaimana status pekerjaan memengaruhi performa akademik mahasiswa aktif Binus.
+
+Partisipasi Anda bersifat sukarela sepenuhnya. Semua jawaban dijaga kerahasiaannya dan hanya digunakan untuk keperluan akademik. Tidak ada informasi yang dapat mengidentifikasi Anda secara pribadi yang akan dibagikan.
+
+Survei ini membutuhkan waktu sekitar 5–8 menit. Dengan melanjutkan, Anda menyatakan bahwa Anda adalah mahasiswa aktif Universitas Bina Nusantara dan bersedia untuk berpartisipasi.`;
+
+const CLOSING_TEXT = `Terima kasih telah mengisi survei ini!
+Jawaban Anda sangat berharga bagi penelitian ini. Semua data dianonimkan dan digunakan semata-mata untuk keperluan analisis akademik. Jika Anda memiliki pertanyaan mengenai penelitian ini, silakan hubungi tim peneliti melalui BinusMaya.
+
+— Tim Penelitian Survey and Sampling Methods, Universitas Bina Nusantara, 2025/2026`;
+
+// Faculty → majors mapping. Only programs verified against binus.ac.id/program/
+// (Faculties & School view: S1, S1 Online, Undergraduate International, Double Programs,
+// D3 Extension, D4 Diploma) — i.e. those granting an undergraduate-tier title
+// (Sarjana / Sarjana Terapan). 18 unverified items removed. SCCA dropped (no S1 majors).
+// FE added as a replacement faculty option. TIDAK ADA DI DAFTAR remains as fallback.
+const FACULTY_MAJORS = {
+  'School of Computer Science (SOCS)': [
+    'Artificial Intelligence',
+    'Computer Science',
+    'Computer Science & Mathematics',
+    'Computer Science & Statistics',
+    'Cyber Security',
+    'Data Science',
+    'Game Application & Technology',
+    'Software Engineering Program'
+  ],
+  'School of Information Systems (SOIS)': [
+    'Business Analytics',
+    'Business Information Tech',
+    'Digital Business Innovation',
+    'Digital Tech in Marine Science',
+    'Digital Technology in Fishery',
+    'Information Systems'
+  ],
+  'School of Design (SOD)': [
+    'Animation',
+    'Creative Advertising',
+    'Fashion',
+    'Film',
+    'Interior Design',
+    'New Media',
+    'Visual Communication Design'
+  ],
+  'School of Accounting (SOA)': [
+    'Accounting',
+    'Finance',
+    'Taxation'
+  ],
+  'Faculty of Digital Communication and Hotel & Tourism (FDCHT)': [
+    'Business Hotel Management',
+    'Creative Communication',
+    'Digital Media Communication',
+    'Event & Travel Business',
+    'Hotel Management',
+    'Marketing Communication'
+  ],
+  'Faculty of Humanities (FOH)': [
+    'Business Law',
+    'Creative Digital English',
+    'Digital Psychology',
+    'Global Business Chinese',
+    'International Relations',
+    'Japanese Popular Culture',
+    'Primary Teacher Education',
+    'Psychology'
+  ],
+  'Binus Business School (BBS)': [
+    'Business Creation',
+    'Business Management',
+    'Digital Business',
+    'Global Business Marketing',
+    'International Business',
+    'Management'
+  ],
+  'Faculty of Engineering (FE)': [
+    'Architecture',
+    'Biotechnology',
+    'Civil Engineering',
+    'Computer Engineering',
+    'Food Technology',
+    'Industrial Engineering',
+    'Professional Engineer Program'
+  ]
+};
+// Sorted union of every major across all faculties (deduplicated).
+const ALL_MAJORS = Array.from(new Set(
+  Object.values(FACULTY_MAJORS).flat()
+)).sort((a, b) => a.localeCompare(b, 'id'));
+const NOT_LISTED = 'TIDAK ADA DI DAFTAR';
+
+const STEPS = [
+  {
+    title: 'A. Seleksi Kriteria',
+    helpText: '',
+    items: [
+      { id: 'A1', type: 'TEXT', title: 'A1. Nama', required: true, validation: 'name', placeholder: 'Nama lengkap Anda' },
+      { id: 'A2', type: 'TEXT', title: 'A2. Email Binus', required: true, validation: 'email_binus', placeholder: 'contoh@binus.ac.id', help: 'Wajib menggunakan @binus.ac.id' },
+      { id: 'A3', type: 'TEXT', title: 'A3. NIM', required: true, validation: 'nim', placeholder: '2602012345', help: 'Wajib diisi. 10 digit dengan prefix tahun 23–29.' },
+      { id: 'A4', type: 'MC',   title: 'A4. Apakah Anda saat ini merupakan mahasiswa aktif Universitas Bina Nusantara dengan pendidikan S1?', required: true,
+        choices: ['Ya','Tidak'], hasOther: false },
+      { id: 'A5', type: 'MC',   title: 'A5. Apakah Anda saat ini bekerja dalam bentuk apa pun sembari kuliah? (Termasuk pekerjaan penuh waktu, paruh waktu, freelance/gig, magang berbayar, atau menjalankan bisnis sendiri.)', required: true,
+        choices: ['Ya','Tidak'], hasOther: false }
+    ]
+  },
+  {
+    title: 'B. Latar Belakang Demografis & Akademik',
+    helpText: '',
+    items: [
+      { id: 'B1', type: 'MC', title: 'B1. Apa Fakultas Anda di Universitas Bina Nusantara?', required: true,
+        choices: Object.keys(FACULTY_MAJORS), hasOther: true },
+      { id: 'B2', type: 'LIST', title: 'B2. Apa Jurusan Anda di Universitas Bina Nusantara?', required: true },
+      { id: 'B3', type: 'TEXT', title: 'B3. Anda saat ini berada di semester berapa?', required: true, validation: 'semester', placeholder: 'Contoh: 4', help: 'Angka 1–14' },
+      { id: 'B4', type: 'TEXT', title: 'B4. Berapa IPK (Indeks Prestasi Kumulatif) terbaru/terakhir Anda?', required: true, validation: 'gpa', placeholder: 'Contoh: 3.50', help: 'Format 0.00 – 4.00' },
+      { id: 'B5', type: 'TEXT', title: 'B5. Berapa IPK Anda sebelum mulai bekerja? (Jika Anda sudah bekerja sebelum masuk Binus, masukkan IPK Semester 1.)', required: true, validation: 'gpa', placeholder: 'Contoh: 3.40', help: 'Format 0.00 – 4.00' }
+    ]
+  },
+  {
+    title: 'C. Profil Pekerjaan',
+    helpText: '',
+    items: [
+      { id: 'C1', type: 'MC', title: 'C1. Apa yang paling tepat menggambarkan jenis pekerjaan utama Anda saat ini?', required: true,
+        choices: [
+          'Karyawan penuh waktu (≥35 jam/minggu, dengan pemberi kerja tetap)',
+          'Karyawan paruh waktu (<35 jam/minggu, dengan pemberi kerja tetap)',
+          'Freelancer / Pekerja gig (berbasis proyek, tanpa pemberi kerja tetap)',
+          'Wirausaha / Pemilik bisnis sendiri',
+          'Magang berbayar / Pekerja kontrak'
+        ], hasOther: true },
+      { id: 'C2', type: 'MC', title: 'C2. Rata-rata, berapa jam per minggu yang Anda habiskan untuk bekerja selama minggu perkuliahan yang normal?', required: true,
+        choices: ['Kurang dari 10 jam','10–19 jam','20–29 jam','30–39 jam','40 jam atau lebih'], hasOther: false },
+      { id: 'C3', type: 'MC', title: 'C3. Sejak semester berapa perkuliahan Anda, Anda mulai bekerja?', required: true,
+        choices: ['Sudah bekerja sebelum masuk Binus'],
+        hasOther: true,
+        otherValue: 'Sejak semester tertentu',
+        otherLabel: 'Sejak semester ke-…',
+        otherInputType: 'numeric',
+        otherInputMaxLength: 2,
+        otherPlaceholder: 'Contoh: 3 (1–14)',
+        otherValidation: 'semester' },
+      { id: 'C4', type: 'SCALE', title: 'C4. Dari skala 1-5, seberapa pekerjaan Anda saat ini berkaitan langsung dengan bidang studi Anda di Binus?', required: true,
+        lower: 1, upper: 5, leftLabel: 'Sangat berkaitan', rightLabel: 'Tidak berkaitan sama sekali' }
+    ]
+  },
+  {
+    title: 'D. Indikator Performa Akademik',
+    helpText: '',
+    items: [
+      { id: 'D1', type: 'MC', title: 'D1. Dibandingkan sebelum Anda mulai bekerja, bagaimana perubahan performa akademik (IPK) Anda secara keseluruhan?', required: true,
+        choices: [
+          'Saya sudah bekerja sebelum masuk Binus (tidak berlaku)',
+          'Menurun Signifikan','Menurun Sedikit','Tidak Berubah Secara Berarti',
+          'Meningkat Sedikit','Meningkat Signifikan'
+        ], hasOther: false },
+      { id: 'D2', type: 'MC', title: 'D2. Dalam satu bulan terakhir, berapa kali Anda tidak hadir di kelas tatap muka karena kewajiban pekerjaan?', required: true,
+        choices: ['Tidak pernah (0 sesi)','1–2 sesi','3–5 sesi','6–10 sesi','Lebih dari 10 sesi'], hasOther: false },
+      { id: 'D3', type: 'MC', title: 'D3. Dalam satu bulan terakhir, berapa kali Anda tidak mengikuti kelas online/virtual karena kewajiban pekerjaan?', required: true,
+        choices: ['Tidak pernah (0 sesi)','1–2 sesi','3–5 sesi','6–10 sesi','Lebih dari 10 sesi'], hasOther: false },
+      { id: 'D4', type: 'SCALE', title: 'D4. Seberapa sering Anda mengumpulkan tugas terlambat atau di bawah standar kualitas yang Anda inginkan akibat kewajiban pekerjaan?', required: true,
+        lower: 1, upper: 5, leftLabel: 'Tidak Pernah', rightLabel: 'Sangat Sering / Selalu' }
+    ]
+  },
+  {
+    title: 'E. Stress, Burnout & Manajemen Waktu',
+    helpText: '',
+    items: [
+      { id: 'E1', type: 'SCALE', title: 'E1. Bagaimana Anda menilai tingkat stres akademik Anda saat ini akibat menyeimbangkan pekerjaan dan perkuliahan?',
+        required: true, lower: 1, upper: 5, leftLabel: 'Tidak Stress Sama Sekali', rightLabel: 'Stres ekstrem / Sangat berat' },
+      { id: 'E2', type: 'SCALE', title: 'E2. Seberapa sering Anda mengalami kelelahan fisik atau mental (burnout) yang Anda kaitkan dengan kombinasi pekerjaan dan kuliah?',
+        required: true, lower: 1, upper: 5, leftLabel: 'Tidak pernah', rightLabel: 'Hampir selalu / Setiap hari' },
+      { id: 'E3', type: 'SCALE', title: 'E3. Bagaimana Anda menilai kemampuan Anda dalam mengatur waktu secara efektif antara pekerjaan dan tanggung jawab akademik?',
+        required: true, lower: 1, upper: 5, leftLabel: 'Sangat buruk', rightLabel: 'Sangat baik' },
+      { id: 'E4', type: 'SCALE', title: 'E4. Seberapa baik Anda memahami dan mengingat materi perkuliahan yang diajarkan di kelas yang Anda hadiri?',
+        required: true, lower: 1, upper: 5, leftLabel: 'Sangat tidak paham', rightLabel: 'Sangat paham' },
+      { id: 'E5', type: 'SCALE', title: 'E5. Seberapa sering jadwal kerja Anda berkonflik langsung dengan jadwal kuliah atau persiapan ujian Anda?',
+        required: true, lower: 1, upper: 5, leftLabel: 'Tidak pernah', rightLabel: 'Sangat sering / Selalu' }
+    ]
+  },
+  {
+    title: 'F. Persepsi Dampak & Refleksi Terbuka',
+    helpText: '',
+    items: [
+      { id: 'F1', type: 'MC', title: 'F1. Secara keseluruhan, menurut Anda apakah bekerja sambil kuliah memberikan dampak positif atau negatif secara neto terhadap performa akademik Anda?', required: true,
+        choices: [
+          'Sangat positif, bekerja sangat membantu akademik saya',
+          'Cukup positif, bekerja sedikit menguntungkan akademik saya',
+          'Netral, tidak ada dampak yang berarti',
+          'Cukup negatif, bekerja sedikit merugikan akademik saya',
+          'Sangat negatif, bekerja sangat merugikan akademik saya'
+        ], hasOther: false },
+      { id: 'F2', type: 'PARAGRAPH', title: 'F2. Apa tantangan terbesar yang Anda hadapi dalam menyeimbangkan pekerjaan dan tanggung jawab akademik?',
+        required: false, placeholder: 'Tulis di sini (opsional)…' }
+    ]
+  },
+  {
+    title: '[PRESURVEY ONLY] FEEDBACK SURVEY',
+    helpText: 'Terima kasih sudah mengisi form ini! Beberapa pertanyaan terakhir ini untuk membantu kami memperbaiki form sebelum disebar lebih luas. Setiap masukan sangat membantu.',
+    items: [
+      { id: 'FB1',         type: 'MC', title: 'Apakah ada pertanyaan yang membingungkan atau sulit dipahami?', required: true,
+        choices: ['Ya','Tidak'], hasOther: false },
+      { id: 'FB1_Detail',  type: 'QUESTION_PICKER', required: false, mode: 'reason',
+        dependsOn: { id: 'FB1', value: 'Ya' },
+        title: 'Pertanyaan mana yang membingungkan, dan kenapa?',
+        help: 'Centang satu atau lebih pertanyaan, lalu jelaskan singkat alasannya.' },
+      { id: 'FB2',         type: 'MC', title: 'Apakah ada pertanyaan yang terasa berulang atau tidak perlu?', required: true,
+        choices: ['Ya','Tidak'], hasOther: false },
+      { id: 'FB2_Detail',  type: 'QUESTION_PICKER', required: false, mode: 'simple',
+        dependsOn: { id: 'FB2', value: 'Ya' },
+        title: 'Pertanyaan mana yang terasa berulang atau tidak perlu?',
+        help: 'Centang satu atau lebih pertanyaan.' },
+      { id: 'FB3',         type: 'MC', title: 'Apakah ada pertanyaan di mana pilihan jawabannya kurang lengkap (misalnya kamu ingin memilih sesuatu tapi tidak ada opsinya)?', required: true,
+        choices: ['Ya','Tidak'], hasOther: false },
+      { id: 'FB3_Detail',  type: 'QUESTION_PICKER', required: false, mode: 'missing_option',
+        dependsOn: { id: 'FB3', value: 'Ya' },
+        title: 'Pertanyaan mana yang opsinya kurang, dan opsi apa yang seharusnya ada?',
+        help: 'Centang satu atau lebih pertanyaan, lalu sebutkan opsi yang kurang.' },
+      { id: 'FB4',         type: 'MC', title: 'Kira-kira berapa lama waktu yang kamu butuhkan untuk mengisi form ini?', required: true,
+        choices: ['2 menit atau kurang','5 menit atau kurang','10 menit atau kurang','Lebih dari 10 menit'], hasOther: false },
+      { id: 'FB5',         type: 'PARAGRAPH', required: false,
+        title: 'Ada saran lain untuk memperbaiki form ini?',
+        placeholder: '(opsional)' }
+    ]
+  }
+];
+
+const EMAIL_RE = /^[a-zA-Z0-9._%+-]+@binus\.ac\.id$/i;
+const NIM_RE   = /^(23|24|25|26|27|28|29)\d{8}$/;
+const GPA_RE   = /^[0-4](\.\d{1,2})?$/;
+
+const DRAFT_KEY = 'binus-survey-2025-draft-v1';
+const STORAGE_VERSION = 1;
+const MIN_SUBMIT_SECONDS = 5;
+
+/* ─────────────────────────────────────────────────────────────────────────
+   STATE
+   ──────────────────────────────────────────────────────────────────────── */
+
+const state = {
+  step: 0,
+  furthestStep: 0,
+  startTimeMs: Date.now(),
+  answers: {},
+  touched: {},
+  scaleTouched: {},
+  screenedOut: false
+};
+
+/* ─────────────────────────────────────────────────────────────────────────
+   HELPERS
+   ──────────────────────────────────────────────────────────────────────── */
+
+function escapeHTML(str) {
+  if (str === null || str === undefined) return '';
+  return String(str).replace(/[&<>'"]/g, t => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+  }[t]));
+}
+
+function debounce(fn, ms) {
+  let t;
+  return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
+}
+
+function getItem(id) {
+  for (const step of STEPS) {
+    for (const item of step.items) if (item.id === id) return item;
+  }
+  return null;
+}
+
+function showAlert(title, text, icon) {
+  document.getElementById('alert-title').textContent = title;
+  document.getElementById('alert-text').textContent = text;
+  document.getElementById('alert-icon').textContent = icon || '⚠️';
+  document.getElementById('alert-modal').classList.add('show');
+}
+
+document.getElementById('alert-ok').addEventListener('click', () => {
+  document.getElementById('alert-modal').classList.remove('show');
+});
+
+/* ─────────────────────────────────────────────────────────────────────────
+   VALIDATION
+   ──────────────────────────────────────────────────────────────────────── */
+
+function validateText(item, value) {
+  const v = String(value || '').trim();
+  if (item.required && v.length === 0) return 'Wajib diisi.';
+  if (!item.required && v.length === 0) return null;
+  switch (item.validation) {
+    case 'name':
+      return v.length === 0 ? 'Nama wajib diisi.' : null;
+    case 'email_binus':
+      return EMAIL_RE.test(v) ? null : 'Gunakan alamat @binus.ac.id yang valid.';
+    case 'nim':
+      return NIM_RE.test(v) ? null : 'NIM harus 10 digit dengan prefix tahun 23–29.';
+    case 'semester': {
+      if (!/^\d+$/.test(v)) return 'Masukkan angka bulat.';
+      const n = parseInt(v, 10);
+      if (n < 1 || n > 14) return 'Semester harus antara 1 dan 14.';
+      return null;
+    }
+    case 'gpa': {
+      if (!GPA_RE.test(v)) return 'Format harus 0.00 – 4.00.';
+      const n = parseFloat(v);
+      if (n < 0 || n > 4) return 'IPK harus antara 0.00 dan 4.00.';
+      return null;
+    }
+    default:
+      return null;
+  }
+}
+
+function validateMC(item, value, otherText) {
+  if (!item.required) return null;
+  if (!value) return 'Wajib dipilih.';
+  const otherValue = item.otherValue || 'Lainnya';
+  if (item.hasOther && value === otherValue) {
+    const t = String(otherText || '').trim();
+    if (t.length === 0) return 'Mohon isi.';
+    if (item.otherValidation === 'semester') {
+      if (!/^\d+$/.test(t)) return 'Semester harus berupa angka bulat.';
+      const n = parseInt(t, 10);
+      if (n < 1 || n > 14) return 'Semester harus antara 1 dan 14.';
+      // C3 cross-check: cannot start working at a semester later than the current semester (B3).
+      if (item.id === 'C3') {
+        const b3 = parseInt(String(state.answers.B3 || '').trim(), 10);
+        if (Number.isInteger(b3) && n > b3) {
+          return 'Lebih dari semester Anda saat ini (Anda di semester ' + b3 + ').';
+        }
+      }
+    }
+  }
+  return null;
+}
+
+function validateList(item, value, otherText) {
+  if (!item.required) return null;
+  if (!value) return 'Wajib dipilih.';
+  if (value === NOT_LISTED) {
+    if (!otherText || String(otherText).trim().length === 0) return 'Mohon ketik nama jurusan Anda.';
+  }
+  return null;
+}
+
+function validateScale(item, value) {
+  if (item.required) {
+    if (value === undefined || value === null || value === '') return 'Mohon pilih salah satu nilai.';
+    const n = Number(value);
+    if (!Number.isInteger(n) || n < item.lower || n > item.upper) return 'Nilai tidak valid.';
+  }
+  return null;
+}
+
+function validateParagraph(item, value) {
+  const v = String(value || '').trim();
+  if (item.required && v.length === 0) return 'Wajib diisi.';
+  if (v.length > 2000) return 'Maksimal 2000 karakter.';
+  return null;
+}
+
+function validateItem(item) {
+  // Items hidden by dependsOn are not validated
+  if (item.dependsOn) {
+    const dep = state.answers[item.dependsOn.id];
+    if (dep !== item.dependsOn.value) return null;
+  }
+  if (item.type === 'TEXT')             return validateText(item, state.answers[item.id]);
+  if (item.type === 'PARAGRAPH')        return validateParagraph(item, state.answers[item.id]);
+  if (item.type === 'MC')               return validateMC(item, state.answers[item.id], state.answers[item.id + '_Lainnya']);
+  if (item.type === 'LIST')             return validateList(item, state.answers[item.id], state.answers[item.id + '_Lainnya']);
+  if (item.type === 'QUESTION_PICKER') {
+    // Conditionally required: when dependsOn condition is met (visible), at least one pick is required.
+    const picks = state.answers[item.id];
+    const n = (picks && typeof picks === 'object') ? Object.keys(picks).length : 0;
+    if (n === 0) return 'Pilih minimal satu pertanyaan.';
+    return null;
+  }
+  if (item.type === 'SCALE') {
+    const err = validateScale(item, state.answers[item.id]);
+    if (err) return err;
+    if (item.required && !state.scaleTouched[item.id]) return 'Mohon pilih salah satu nilai.';
+    return null;
+  }
+  return null;
+}
+
+function validateStep(stepIdx) {
+  const step = STEPS[stepIdx];
+  if (!step) return { ok: true };
+  for (const item of step.items) {
+    const err = validateItem(item);
+    if (err) return { ok: false, firstInvalid: item.id };
+  }
+  return { ok: true };
+}
+
+function markStepTouched(stepIdx) {
+  const step = STEPS[stepIdx];
+  if (!step) return;
+  for (const item of step.items) {
+    state.touched[item.id] = true;
+    // SCALE items: do NOT auto-mark scaleTouched; the slider value should still be validated as untouched.
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   PERSISTENCE (localStorage draft)
+   ──────────────────────────────────────────────────────────────────────── */
+
+function saveDraft() {
+  if (state.screenedOut) return;
+  try {
+    localStorage.setItem(DRAFT_KEY, JSON.stringify({
+      v: STORAGE_VERSION,
+      step: state.step,
+      furthestStep: state.furthestStep,
+      startTimeMs: state.startTimeMs,
+      answers: state.answers,
+      touched: state.touched,
+      scaleTouched: state.scaleTouched
+    }));
+  } catch (e) { /* quota or disabled */ }
+}
+const saveDraftDebounced = debounce(saveDraft, 300);
+
+function clearDraft() {
+  try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+}
+
+function loadDraftIfAny() {
+  try {
+    const raw = localStorage.getItem(DRAFT_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (parsed.v !== STORAGE_VERSION) return null;
+    const hasContent = parsed.answers && Object.values(parsed.answers).some(v =>
+      (typeof v === 'string' && v.trim().length > 0) || (typeof v === 'number')
+    );
+    return hasContent ? parsed : null;
+  } catch (e) { return null; }
+}
+
+function applyDraft(d) {
+  state.step = d.step || 0;
+  state.furthestStep = d.furthestStep || 0;
+  state.startTimeMs = d.startTimeMs || Date.now();
+  state.answers = d.answers || {};
+  state.touched = d.touched || {};
+  state.scaleTouched = d.scaleTouched || {};
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   SCREENING
+   ──────────────────────────────────────────────────────────────────────── */
+
+function checkScreening() {
+  if (state.answers.A4 === 'Tidak') {
+    showScreenOut(
+      'Terima Kasih atas Partisipasinya',
+      'Survei ini hanya untuk mahasiswa aktif S1 Universitas Bina Nusantara. Jawaban Anda tidak akan dikirim. Anda boleh menutup tab ini.'
+    );
+    return true;
+  }
+  if (state.answers.A5 === 'Tidak') {
+    showScreenOut(
+      'Terima Kasih atas Partisipasinya',
+      'Survei ini hanya untuk mahasiswa Binus yang sedang bekerja sembari kuliah. Jawaban Anda tidak akan dikirim. Anda boleh menutup tab ini.'
+    );
+    return true;
+  }
+  return false;
+}
+
+function showScreenOut(title, text) {
+  state.screenedOut = true;
+  clearDraft();
+  document.getElementById('screenout-title').textContent = title;
+  document.getElementById('screenout-text').textContent = text;
+  document.getElementById('screenout').classList.add('show');
+  const pt = document.getElementById('progress-top');
+  if (pt) pt.style.display = 'none';
+  document.getElementById('step-host').style.display = 'none';
+  window.scrollTo(0, 0);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   RENDERING
+   ──────────────────────────────────────────────────────────────────────── */
+
+function renderHeader() {
+  const desc = document.getElementById('header-desc');
+  desc.innerHTML = '';
+  HEADER_DESC.split(/\n\n+/).forEach(para => {
+    const p = document.createElement('p');
+    p.textContent = para;
+    desc.appendChild(p);
+  });
+  // Wire up toggle once
+  const btn = document.getElementById('header-desc-toggle');
+  if (btn && !btn.dataset.bound) {
+    btn.dataset.bound = '1';
+    btn.addEventListener('click', () => {
+      const isCollapsed = desc.classList.contains('collapsed');
+      setHeaderDescState(isCollapsed); // toggle: pass true if currently collapsed → expand
+    });
+  }
+}
+
+function setHeaderDescState(expanded) {
+  const desc = document.getElementById('header-desc');
+  const btn  = document.getElementById('header-desc-toggle');
+  if (!desc || !btn) return;
+  const txt = btn.querySelector('.header-desc-toggle-text');
+  if (expanded) {
+    desc.classList.remove('collapsed');
+    desc.setAttribute('aria-hidden', 'false');
+    btn.classList.add('expanded');
+    btn.setAttribute('aria-expanded', 'true');
+    if (txt) txt.textContent = 'Sembunyikan info survei';
+  } else {
+    desc.classList.add('collapsed');
+    desc.setAttribute('aria-hidden', 'true');
+    btn.classList.remove('expanded');
+    btn.setAttribute('aria-expanded', 'false');
+    if (txt) txt.textContent = 'Tampilkan info survei';
+  }
+}
+
+function renderStepsNav() {
+  const host = document.getElementById('progress-top');
+  if (!host) return;
+  const total = STEPS.length;
+  const current = Math.min(state.step + 1, total);
+  const pct = Math.round((current / total) * 100);
+  host.innerHTML = `
+    <div class="progress-top-row">
+      <span>Step ${current} / ${total}</span>
+      <span>${pct}%</span>
+    </div>
+    <div class="progress-top-track"><div class="progress-top-fill" style="width:${pct}%"></div></div>
+  `;
+}
+
+function renderStep() {
+  const host = document.getElementById('step-host');
+  const step = STEPS[state.step];
+  if (!step) { host.innerHTML = ''; return; }
+
+  const card = document.createElement('div');
+  card.className = 'card';
+
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  const title = document.createElement('div');
+  title.className = 'card-head-title';
+  title.textContent = step.title;
+  head.appendChild(title);
+  if (step.helpText && step.helpText.length > 0) {
+    const help = document.createElement('div');
+    help.className = 'card-head-help';
+    help.textContent = step.helpText;
+    head.appendChild(help);
+  }
+  card.appendChild(head);
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  for (const item of step.items) {
+    const node = renderQuestion(item);
+    if (node) body.appendChild(node);
+  }
+
+  // nav buttons
+  const actions = document.createElement('div');
+  actions.className = 'step-actions';
+  if (state.step > 0) {
+    const back = document.createElement('button');
+    back.className = 'btn-nav btn-back';
+    back.type = 'button';
+    back.textContent = '← Kembali';
+    back.addEventListener('click', () => goToStep(state.step - 1));
+    actions.appendChild(back);
+  }
+  if (state.step < STEPS.length - 1) {
+    const next = document.createElement('button');
+    next.className = 'btn-nav btn-next';
+    next.type = 'button';
+    next.textContent = 'Selanjutnya →';
+    next.addEventListener('click', onClickNext);
+    actions.appendChild(next);
+  } else {
+    const submit = document.createElement('button');
+    submit.id = 'btn-submit';
+    submit.className = 'btn-submit';
+    submit.type = 'button';
+    submit.textContent = 'Kirim Jawaban';
+    submit.addEventListener('click', onClickSubmit);
+    actions.appendChild(submit);
+  }
+  body.appendChild(actions);
+
+  card.appendChild(body);
+
+  host.innerHTML = '';
+  host.appendChild(card);
+}
+
+function renderQuestion(item) {
+  // Conditional display: hide if dependsOn condition not met
+  if (item.dependsOn) {
+    const dep = state.answers[item.dependsOn.id];
+    if (dep !== item.dependsOn.value) return null;
+  }
+
+  const wrap = document.createElement('div');
+  wrap.className = 'q';
+  wrap.id = 'q-' + item.id;
+
+  if (item.title) {
+    const t = document.createElement('div');
+    t.className = 'q-title';
+    // preserve newlines
+    t.textContent = item.title;
+    // QUESTION_PICKER becomes required when its dependency is met (the dependsOn early-return above
+    // means we only reach here when it IS met)
+    const showRequired = item.required || item.type === 'QUESTION_PICKER';
+    if (showRequired) {
+      const r = document.createElement('span');
+      r.className = 'req';
+      r.textContent = ' *';
+      t.appendChild(r);
+    }
+    wrap.appendChild(t);
+  }
+  if (item.help) {
+    const h = document.createElement('div');
+    h.className = 'q-help';
+    h.textContent = item.help;
+    wrap.appendChild(h);
+  }
+
+  if      (item.type === 'TEXT')             wrap.appendChild(renderTextInput(item));
+  else if (item.type === 'PARAGRAPH')        wrap.appendChild(renderParagraph(item));
+  else if (item.type === 'MC')               wrap.appendChild(renderMC(item));
+  else if (item.type === 'LIST')             wrap.appendChild(renderList(item));
+  else if (item.type === 'SCALE')            wrap.appendChild(renderScale(item));
+  else if (item.type === 'QUESTION_PICKER')  wrap.appendChild(renderQuestionPicker(item));
+
+  const err = document.createElement('div');
+  err.className = 'q-err';
+  err.id = 'err-' + item.id;
+  wrap.appendChild(err);
+
+  // re-validate touched on render
+  if (state.touched[item.id]) updateFieldError(item);
+
+  return wrap;
+}
+
+// Build a flat list of questions the user can reference in feedback (skips section breaks, review, and feedback Qs themselves)
+function getReferenceableQuestions() {
+  const out = [];
+  for (const step of STEPS) {
+    // Skip the feedback step itself and Section A (basic identity / screening — not feedback-relevant)
+    if (/FEEDBACK SURVEY/i.test(step.title) || /Tinjau/i.test(step.title)) continue;
+    if (/^A\.\s/.test(step.title)) continue;
+    for (const item of step.items) {
+      if (item.type === 'QUESTION_PICKER') continue;
+      out.push({ id: item.id, section: step.title, title: item.title || item.id });
+    }
+  }
+  return out;
+}
+
+function renderQuestionPicker(item) {
+  // Ensure picks state object exists
+  if (typeof state.answers[item.id] !== 'object' || state.answers[item.id] === null || Array.isArray(state.answers[item.id])) {
+    state.answers[item.id] = {};
+  }
+
+  const trigger = document.createElement('button');
+  trigger.type = 'button';
+  trigger.className = 'qp-trigger';
+  trigger.id = 'qp-trigger-' + item.id;
+
+  const txt = document.createElement('span');
+  txt.className = 'qp-trigger-text';
+  trigger.appendChild(txt);
+
+  const count = document.createElement('span');
+  count.className = 'qp-trigger-count';
+  count.style.display = 'none';
+  trigger.appendChild(count);
+
+  const chev = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  chev.setAttribute('class', 'qp-trigger-chev');
+  chev.setAttribute('viewBox', '0 0 14 14');
+  chev.innerHTML = '<polyline points="5 3 9 7 5 11" />';
+  trigger.appendChild(chev);
+
+  refreshPickerTrigger(item, trigger);
+
+  trigger.addEventListener('click', () => openPickerModal(item, trigger));
+
+  return trigger;
+}
+
+function refreshPickerTrigger(item, triggerEl) {
+  const picks = state.answers[item.id] || {};
+  const n = Object.keys(picks).length;
+  const txt = triggerEl.querySelector('.qp-trigger-text');
+  const count = triggerEl.querySelector('.qp-trigger-count');
+  if (n === 0) {
+    triggerEl.classList.remove('has-picks');
+    txt.textContent = 'Pilih pertanyaan…';
+    if (count) count.style.display = 'none';
+  } else {
+    triggerEl.classList.add('has-picks');
+    txt.textContent = Object.keys(picks).join(', ');
+    if (count) {
+      count.textContent = n;
+      count.style.display = 'inline-flex';
+    }
+  }
+}
+
+function openPickerModal(item, triggerEl) {
+  const overlay = document.getElementById('qp-modal-overlay');
+  const titleEl = document.getElementById('qp-modal-title');
+  const helpEl  = document.getElementById('qp-modal-help');
+  const bodyEl  = document.getElementById('qp-modal-body');
+  const counterEl = document.getElementById('qp-modal-counter');
+  const clearBtn = document.getElementById('qp-modal-clear');
+  const doneBtn  = document.getElementById('qp-modal-done');
+
+  titleEl.textContent = item.title || 'Pilih pertanyaan';
+  helpEl.textContent  = item.help  || '';
+
+  if (typeof state.answers[item.id] !== 'object' || state.answers[item.id] === null || Array.isArray(state.answers[item.id])) {
+    state.answers[item.id] = {};
+  }
+  const picks = state.answers[item.id];
+
+  const refs = getReferenceableQuestions();
+  const bySection = {};
+  const sectionOrder = [];
+  for (const r of refs) {
+    if (!bySection[r.section]) { bySection[r.section] = []; sectionOrder.push(r.section); }
+    bySection[r.section].push(r);
+  }
+
+  const updateCounter = () => {
+    const n = Object.keys(picks).length;
+    counterEl.textContent = n + ' dipilih';
+  };
+
+  bodyEl.innerHTML = '';
+  sectionOrder.forEach(section => {
+    const sec = document.createElement('div');
+    sec.className = 'qp-section';
+    const t = document.createElement('div');
+    t.className = 'qp-section-title';
+    t.textContent = section;
+    sec.appendChild(t);
+
+    bySection[section].forEach(q => {
+      const row = document.createElement('label');
+      row.className = 'qp-row';
+      if (picks[q.id] !== undefined) row.classList.add('selected');
+
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.className = 'qp-cb-input';
+      cb.checked = picks[q.id] !== undefined;
+
+      const cbBox = document.createElement('span');
+      cbBox.className = 'qp-cb';
+      cbBox.innerHTML = '<svg viewBox="0 0 16 16"><polyline points="3 8.5 6.5 12 13 4.5"/></svg>';
+
+      const text = document.createElement('div');
+      text.className = 'qp-text-wrap';
+      const lbl = document.createElement('div');
+      lbl.className = 'qp-label';
+      lbl.textContent = (q.title.split('\n')[0] || q.id);
+      text.appendChild(lbl);
+
+      let reasonInp = null;
+      if (item.mode !== 'simple') {
+        reasonInp = document.createElement('input');
+        reasonInp.type = 'text';
+        reasonInp.className = 'qp-reason-input';
+        reasonInp.placeholder = item.mode === 'reason' ? 'Apa yang membingungkan?' : 'Opsi apa yang seharusnya ada?';
+        reasonInp.value = picks[q.id] || '';
+        reasonInp.style.display = (picks[q.id] !== undefined) ? 'block' : 'none';
+        reasonInp.addEventListener('click', e => e.stopPropagation());
+        reasonInp.addEventListener('mousedown', e => e.stopPropagation());
+        reasonInp.addEventListener('input', () => {
+          if (picks[q.id] !== undefined) {
+            picks[q.id] = reasonInp.value;
+            saveDraftDebounced();
+          }
+        });
+        text.appendChild(reasonInp);
+      }
+
+      cb.addEventListener('change', () => {
+        if (cb.checked) {
+          picks[q.id] = (item.mode !== 'simple' && reasonInp) ? reasonInp.value : '';
+          row.classList.add('selected');
+          if (reasonInp) {
+            reasonInp.style.display = 'block';
+            setTimeout(() => reasonInp.focus(), 0);
+          }
+        } else {
+          delete picks[q.id];
+          row.classList.remove('selected');
+          if (reasonInp) reasonInp.style.display = 'none';
+        }
+        state.touched[item.id] = true;
+        updateCounter();
+        saveDraftDebounced();
+      });
+
+      row.appendChild(cb);
+      row.appendChild(cbBox);
+      row.appendChild(text);
+      sec.appendChild(row);
+    });
+
+    bodyEl.appendChild(sec);
+  });
+
+  updateCounter();
+  overlay.classList.add('show');
+  bodyEl.scrollTop = 0;
+
+  const close = () => {
+    overlay.classList.remove('show');
+    refreshPickerTrigger(item, triggerEl);
+    state.touched[item.id] = true;
+    updateFieldError(item);
+    overlay.removeEventListener('click', onOverlayClick);
+    doneBtn.removeEventListener('click', close);
+    clearBtn.removeEventListener('click', onClear);
+    document.removeEventListener('keydown', onKey);
+  };
+  const onOverlayClick = (e) => { if (e.target === overlay) close(); };
+  const onKey = (e) => { if (e.key === 'Escape') close(); };
+  const onClear = () => {
+    Object.keys(picks).forEach(k => delete picks[k]);
+    state.touched[item.id] = true;
+    saveDraftDebounced();
+    // re-render modal contents
+    close();
+    openPickerModal(item, triggerEl);
+  };
+
+  overlay.addEventListener('click', onOverlayClick);
+  doneBtn.addEventListener('click', close);
+  clearBtn.addEventListener('click', onClear);
+  document.addEventListener('keydown', onKey);
+}
+
+// Serialize a question-picker object to a readable string for storage and submission
+function serializePickerData(obj, mode) {
+  if (!obj || typeof obj !== 'object') return '';
+  const ids = Object.keys(obj);
+  if (ids.length === 0) return '';
+  if (mode === 'simple') return ids.join(', ');
+  // reason / missing_option: include reason where given
+  return ids.map(id => {
+    const r = (obj[id] || '').trim();
+    return r.length > 0 ? `${id}: ${r}` : id;
+  }).join(' | ');
+}
+
+function renderTextInput(item) {
+  const inp = document.createElement('input');
+  inp.type = 'text';
+  inp.className = 'txt-inp';
+  inp.id = 'inp-' + item.id;
+  inp.value = state.answers[item.id] || '';
+  if (item.placeholder) inp.placeholder = item.placeholder;
+  if (item.validation === 'nim') { inp.maxLength = 10; inp.inputMode = 'numeric'; }
+  if (item.validation === 'semester')     { inp.maxLength = 2;  inp.inputMode = 'numeric'; }
+  if (item.validation === 'gpa')          { inp.maxLength = 4;  inp.inputMode = 'decimal'; }
+  if (item.validation === 'email_binus')  { inp.type = 'email'; inp.autocomplete = 'email'; }
+
+  inp.addEventListener('input', () => {
+    state.answers[item.id] = inp.value;
+    if (state.touched[item.id]) updateFieldError(item);
+    saveDraftDebounced();
+  });
+  inp.addEventListener('blur', () => {
+    state.touched[item.id] = true;
+    updateFieldError(item);
+    saveDraftDebounced();
+  });
+  return inp;
+}
+
+function renderParagraph(item) {
+  const ta = document.createElement('textarea');
+  ta.className = 'txt-area';
+  ta.id = 'inp-' + item.id;
+  ta.rows = 4;
+  ta.maxLength = 2000;
+  if (item.placeholder) ta.placeholder = item.placeholder;
+  ta.value = state.answers[item.id] || '';
+  ta.addEventListener('input', () => {
+    state.answers[item.id] = ta.value;
+    if (state.touched[item.id]) updateFieldError(item);
+    saveDraftDebounced();
+  });
+  ta.addEventListener('blur', () => {
+    state.touched[item.id] = true;
+    updateFieldError(item);
+    saveDraftDebounced();
+  });
+  return ta;
+}
+
+function renderMC(item) {
+  const wrap = document.createElement('div');
+  const list = document.createElement('div');
+  list.className = 'opt-list';
+
+  const otherValue = item.otherValue || 'Lainnya';
+  const otherLabel = item.otherLabel || 'Lainnya:';
+
+  const choices = [...item.choices];
+  if (item.hasOther) choices.push(otherValue);
+
+  choices.forEach((choice, idx) => {
+    const opt = document.createElement('div');
+    opt.className = 'opt';
+    const inp = document.createElement('input');
+    inp.type = 'radio';
+    inp.name = 'mc-' + item.id;
+    inp.id = 'mc-' + item.id + '-' + idx;
+    inp.value = choice;
+    if (state.answers[item.id] === choice) inp.checked = true;
+    inp.addEventListener('change', () => {
+      state.answers[item.id] = choice;
+      state.touched[item.id] = true;
+      const otherWrap = wrap.querySelector('.other-wrap');
+      if (otherWrap) {
+        if (choice === otherValue) {
+          otherWrap.classList.add('show');
+          // auto-focus the input for snappy interaction
+          setTimeout(() => {
+            const oi = document.getElementById('other-' + item.id);
+            if (oi) oi.focus();
+          }, 0);
+        } else {
+          otherWrap.classList.remove('show');
+          state.answers[item.id + '_Lainnya'] = '';
+        }
+      }
+      updateFieldError(item);
+      saveDraftDebounced();
+      // If any item in the current step depends on this answer, re-render to reflect visibility changes
+      const step = STEPS[state.step];
+      if (step && step.items.some(i => i.dependsOn && i.dependsOn.id === item.id)) {
+        renderStep();
+      }
+    });
+    const lbl = document.createElement('label');
+    lbl.className = 'opt-lbl';
+    lbl.htmlFor = inp.id;
+    const radio = document.createElement('span');
+    radio.className = 'opt-radio';
+    lbl.appendChild(radio);
+    const txt = document.createElement('span');
+    txt.textContent = (choice === otherValue ? otherLabel : choice);
+    lbl.appendChild(txt);
+    opt.appendChild(inp);
+    opt.appendChild(lbl);
+    list.appendChild(opt);
+  });
+
+  wrap.appendChild(list);
+
+  if (item.hasOther) {
+    const otherWrap = document.createElement('div');
+    otherWrap.className = 'other-wrap';
+    if (state.answers[item.id] === otherValue) otherWrap.classList.add('show');
+    const otherInp = document.createElement('input');
+    otherInp.type = 'text';
+    if (item.otherInputType === 'numeric') {
+      otherInp.inputMode = 'numeric';
+      otherInp.pattern = '[0-9]*';
+    }
+    if (item.otherInputMaxLength) otherInp.maxLength = item.otherInputMaxLength;
+    otherInp.className = 'other-inp';
+    otherInp.id = 'other-' + item.id;
+    otherInp.placeholder = item.otherPlaceholder || 'Tuliskan jawaban Anda…';
+    otherInp.value = state.answers[item.id + '_Lainnya'] || '';
+    otherInp.addEventListener('input', () => {
+      state.answers[item.id + '_Lainnya'] = otherInp.value;
+      if (state.touched[item.id]) updateFieldError(item);
+      saveDraftDebounced();
+    });
+    otherInp.addEventListener('blur', () => {
+      state.touched[item.id] = true;
+      updateFieldError(item);
+      saveDraftDebounced();
+    });
+    otherWrap.appendChild(otherInp);
+    wrap.appendChild(otherWrap);
+  }
+
+  return wrap;
+}
+
+function renderList(item) {
+  // B2 — combobox filtered by B1, with toggle to show all
+  const wrap = document.createElement('div');
+  wrap.className = 'combo-wrap';
+
+  const inputRow = document.createElement('div');
+  inputRow.className = 'combo-input-row';
+
+  const inp = document.createElement('input');
+  inp.type = 'text';
+  inp.className = 'combo-input';
+  inp.id = 'combo-' + item.id;
+  inp.placeholder = 'Ketik untuk mencari jurusan…';
+  inp.autocomplete = 'off';
+  inp.value = state.answers[item.id] || '';
+  inputRow.appendChild(inp);
+
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'combo-toggle';
+  toggle.textContent = 'Semua Jurusan';
+  inputRow.appendChild(toggle);
+
+  wrap.appendChild(inputRow);
+
+  const hint = document.createElement('div');
+  hint.className = 'combo-hint';
+  hint.id = 'combo-hint-' + item.id;
+  wrap.appendChild(hint);
+
+  const listEl = document.createElement('div');
+  listEl.className = 'combo-list';
+  listEl.id = 'combo-list-' + item.id;
+  wrap.appendChild(listEl);
+
+  // "Other" input for TIDAK ADA DI DAFTAR
+  const otherWrap = document.createElement('div');
+  otherWrap.className = 'other-wrap';
+  if (state.answers[item.id] === NOT_LISTED) otherWrap.classList.add('show');
+  const otherInp = document.createElement('input');
+  otherInp.type = 'text';
+  otherInp.className = 'other-inp';
+  otherInp.id = 'other-' + item.id;
+  otherInp.placeholder = 'Ketik nama jurusan Anda…';
+  otherInp.value = state.answers[item.id + '_Lainnya'] || '';
+  otherInp.addEventListener('input', () => {
+    state.answers[item.id + '_Lainnya'] = otherInp.value;
+    if (state.touched[item.id]) updateFieldError(item);
+    saveDraftDebounced();
+  });
+  otherInp.addEventListener('blur', () => {
+    state.touched[item.id] = true;
+    updateFieldError(item);
+  });
+  otherWrap.appendChild(otherInp);
+  wrap.appendChild(otherWrap);
+
+  let showAllMode = false;
+
+  const refreshHint = () => {
+    const fac = state.answers.B1;
+    if (showAllMode) {
+      hint.textContent = 'Menampilkan semua ' + ALL_MAJORS.length + ' jurusan. Klik "Semua Jurusan" lagi untuk filter berdasarkan fakultas.';
+    } else if (fac && FACULTY_MAJORS[fac] && FACULTY_MAJORS[fac].length > 0) {
+      hint.textContent = 'Disaring untuk fakultas: ' + fac + '. Tidak ketemu? Klik "Semua Jurusan".';
+    } else if (fac && FACULTY_MAJORS[fac] && FACULTY_MAJORS[fac].length === 0) {
+      hint.textContent = 'Fakultas ini tidak punya jurusan dalam daftar bawaan. Klik "Semua Jurusan" untuk lihat seluruh daftar, atau pilih TIDAK ADA DI DAFTAR.';
+    } else {
+      hint.textContent = 'Pilih Fakultas (B1) terlebih dahulu, atau klik "Semua Jurusan" untuk lihat seluruh daftar.';
+    }
+  };
+
+  const candidates = () => {
+    if (showAllMode) return ALL_MAJORS.concat([NOT_LISTED]);
+    const fac = state.answers.B1;
+    if (fac && FACULTY_MAJORS[fac] && FACULTY_MAJORS[fac].length > 0) return FACULTY_MAJORS[fac].concat([NOT_LISTED]);
+    return [NOT_LISTED];
+  };
+
+  const renderOptions = (query) => {
+    const q = (query || '').trim().toLowerCase();
+    const cands = candidates();
+    const filtered = q.length === 0
+      ? cands
+      : cands.filter(c => c.toLowerCase().includes(q));
+    listEl.innerHTML = '';
+    if (filtered.length === 0) {
+      const empty = document.createElement('div');
+      empty.className = 'combo-item empty';
+      empty.textContent = 'Tidak ada jurusan yang cocok. Klik "Semua Jurusan" untuk lihat seluruh daftar, atau pilih TIDAK ADA DI DAFTAR.';
+      listEl.appendChild(empty);
+    } else {
+      filtered.forEach(name => {
+        const it = document.createElement('div');
+        it.className = 'combo-item';
+        if (state.answers[item.id] === name) it.classList.add('selected');
+        it.textContent = name;
+        it.addEventListener('click', () => selectMajor(name));
+        listEl.appendChild(it);
+      });
+    }
+    listEl.classList.add('show');
+  };
+
+  const selectMajor = (name) => {
+    state.answers[item.id] = name;
+    state.touched[item.id] = true;
+    inp.value = name;
+    listEl.classList.remove('show');
+    if (name === NOT_LISTED) otherWrap.classList.add('show');
+    else { otherWrap.classList.remove('show'); state.answers[item.id + '_Lainnya'] = ''; }
+    updateFieldError(item);
+    saveDraftDebounced();
+    refreshHint();
+  };
+
+  inp.addEventListener('focus', () => renderOptions(inp.value));
+  inp.addEventListener('input', () => {
+    // typing arbitrary text deselects, but we want to enforce one of the list options
+    state.answers[item.id] = '';
+    renderOptions(inp.value);
+  });
+  inp.addEventListener('blur', () => {
+    setTimeout(() => {
+      // If focus returned to input (e.g., toggle button re-focused it), don't close.
+      if (document.activeElement === inp) return;
+      listEl.classList.remove('show');
+      // if input doesn't match any candidate exactly, clear answer
+      const cands = candidates();
+      const match = cands.find(c => c.toLowerCase() === inp.value.trim().toLowerCase());
+      if (match) {
+        if (state.answers[item.id] !== match) selectMajor(match);
+      } else if (inp.value.trim().length > 0) {
+        // user typed something not in list — clear input, mark touched
+        state.touched[item.id] = true;
+        if (state.answers[item.id]) inp.value = state.answers[item.id];
+        else inp.value = '';
+      }
+      updateFieldError(item);
+    }, 180);
+  });
+  toggle.addEventListener('click', () => {
+    showAllMode = !showAllMode;
+    toggle.classList.toggle('active', showAllMode);
+    refreshHint();
+    renderOptions(inp.value);
+    inp.focus();
+  });
+
+  refreshHint();
+  return wrap;
+}
+
+function renderScale(item) {
+  const wrap = document.createElement('div');
+  wrap.className = 'scale-wrap';
+
+  const valueRow = document.createElement('div');
+  valueRow.className = 'scale-value-row';
+  const lbl = document.createElement('div');
+  lbl.className = 'scale-value-label';
+  lbl.textContent = 'Skala ' + item.lower + '–' + item.upper;
+  valueRow.appendChild(lbl);
+  const chip = document.createElement('div');
+  chip.className = 'scale-chip';
+  chip.id = 'chip-' + item.id;
+  const cur = state.answers[item.id];
+  const setChip = (val, empty) => {
+    chip.classList.toggle('empty', !!empty);
+    chip.innerHTML = '<span class="num">' + (empty ? '—' : val) + '</span>/ ' + item.upper;
+  };
+  if (cur !== undefined && cur !== null && cur !== '' && state.scaleTouched[item.id]) {
+    setChip(cur, false);
+  } else {
+    setChip(null, true);
+  }
+  valueRow.appendChild(chip);
+  wrap.appendChild(valueRow);
+
+  // Radio button options (Google Forms-style Likert)
+  const options = document.createElement('div');
+  options.className = 'scale-options';
+  for (let i = item.lower; i <= item.upper; i++) {
+    const opt = document.createElement('div');
+    opt.className = 'scale-opt';
+
+    const inp = document.createElement('input');
+    inp.type = 'radio';
+    inp.name = 'scale-' + item.id;
+    inp.id = 'scale-' + item.id + '-' + i;
+    inp.value = String(i);
+    if (state.scaleTouched[item.id] && cur === i) inp.checked = true;
+
+    const lblEl = document.createElement('label');
+    lblEl.className = 'scale-opt-lbl';
+    lblEl.htmlFor = inp.id;
+
+    const num = document.createElement('span');
+    num.className = 'scale-opt-num';
+    num.textContent = String(i);
+    lblEl.appendChild(num);
+
+    const radio = document.createElement('span');
+    radio.className = 'scale-opt-radio';
+    lblEl.appendChild(radio);
+
+    inp.addEventListener('change', () => {
+      state.answers[item.id] = i;
+      state.scaleTouched[item.id] = true;
+      state.touched[item.id] = true;
+      setChip(i, false);
+      updateFieldError(item);
+      saveDraftDebounced();
+    });
+
+    opt.appendChild(inp);
+    opt.appendChild(lblEl);
+    options.appendChild(opt);
+  }
+  wrap.appendChild(options);
+
+  // Edge labels
+  const labels = document.createElement('div');
+  labels.className = 'scale-labels';
+  const left = document.createElement('span');
+  left.textContent = item.leftLabel || '';
+  const right = document.createElement('span');
+  right.textContent = item.rightLabel || '';
+  labels.appendChild(left);
+  labels.appendChild(right);
+  wrap.appendChild(labels);
+
+  return wrap;
+}
+
+function updateFieldError(item) {
+  const err = document.getElementById('err-' + item.id);
+  if (!err) return;
+  const message = validateItem(item);
+  const inp = document.getElementById('inp-' + item.id) || document.getElementById('combo-' + item.id);
+  const oth = document.getElementById('other-' + item.id);
+  const trg = document.getElementById('qp-trigger-' + item.id);
+  if (state.touched[item.id] && message) {
+    err.textContent = message;
+    err.classList.add('show');
+    if (inp) inp.classList.add('invalid');
+    if (oth) oth.classList.add('invalid');
+    if (trg) trg.classList.add('invalid');
+  } else {
+    err.textContent = '';
+    err.classList.remove('show');
+    if (inp) inp.classList.remove('invalid');
+    if (oth) oth.classList.remove('invalid');
+    if (trg) trg.classList.remove('invalid');
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   NAV
+   ──────────────────────────────────────────────────────────────────────── */
+
+function goToStep(idx) {
+  if (idx < 0 || idx >= STEPS.length) return;
+  state.step = idx;
+  if (idx > state.furthestStep) state.furthestStep = idx;
+  saveDraft();
+  renderStepsNav();
+  renderStep();
+  // Auto-expand intro on Step 1 (first time), auto-collapse on every subsequent step.
+  setHeaderDescState(idx === 0);
+  window.scrollTo(0, 0);
+}
+
+function onClickNext() {
+  // Mark all current-step fields touched and validate
+  markStepTouched(state.step);
+  const result = validateStep(state.step);
+  // After updating touched, re-render errors for current step
+  STEPS[state.step].items.forEach(item => updateFieldError(item));
+  if (!result.ok) {
+    // Focus first invalid
+    const firstInp = document.getElementById('inp-' + result.firstInvalid)
+      || document.getElementById('combo-' + result.firstInvalid)
+      || document.getElementById('mc-' + result.firstInvalid + '-0')
+      || document.getElementById('qp-trigger-' + result.firstInvalid);
+    if (firstInp) firstInp.focus();
+    return;
+  }
+
+  // After step 1 (A), check screening
+  if (state.step === 0) {
+    if (checkScreening()) return;
+  }
+
+  goToStep(state.step + 1);
+}
+
+function onClickSubmit() {
+  // Validate every step (no separate review step — last step is the actual feedback questions)
+  for (let i = 0; i < STEPS.length; i++) {
+    markStepTouched(i);
+    const result = validateStep(i);
+    if (!result.ok) {
+      goToStep(i);
+      // re-render errors after goToStep, then focus
+      setTimeout(() => {
+        STEPS[i].items.forEach(item => updateFieldError(item));
+        const el = document.getElementById('inp-' + result.firstInvalid)
+          || document.getElementById('combo-' + result.firstInvalid)
+          || document.getElementById('mc-' + result.firstInvalid + '-0')
+          || document.getElementById('qp-trigger-' + result.firstInvalid);
+        if (el) el.focus();
+      }, 50);
+      showAlert('Periksa Jawaban', 'Beberapa pertanyaan masih belum terisi atau tidak valid. Mohon lengkapi sebelum mengirim.', '⚠️');
+      return;
+    }
+  }
+
+  // Defensive screening recheck
+  if (state.answers.A4 === 'Tidak' || state.answers.A5 === 'Tidak') {
+    checkScreening();
+    return;
+  }
+
+  // Min completion time
+  const elapsedSec = (Date.now() - state.startTimeMs) / 1000;
+  if (elapsedSec < MIN_SUBMIT_SECONDS) {
+    showAlert('Mohon Tunggu', 'Mohon luangkan waktu untuk membaca pertanyaan dengan teliti sebelum mengirim.', '⏳');
+    return;
+  }
+
+  doSubmit();
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   SUBMIT
+   ──────────────────────────────────────────────────────────────────────── */
+
+async function doSubmit() {
+  const btn = document.getElementById('btn-submit');
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = `<svg class="spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Mengirim…`;
+  }
+
+  // Progress bar
+  const actions = btn ? btn.parentElement : null;
+  const progHtml = `
+    <div id="submit-progress" class="progress-wrap">
+      <div class="progress-row"><span>Mengirim jawaban…</span><span id="prog-pct">10%</span></div>
+      <div class="progress-bar-bg"><div class="progress-bar-fg" id="prog-fg" style="width:10%"></div></div>
+    </div>`;
+  if (actions) actions.insertAdjacentHTML('beforebegin', progHtml);
+
+  let prog = 10;
+  const progInt = setInterval(() => {
+    if (prog < 90) {
+      prog += Math.random() * 12;
+      if (prog > 90) prog = 90;
+      const fg  = document.getElementById('prog-fg');
+      const pct = document.getElementById('prog-pct');
+      if (fg)  fg.style.width = prog + '%';
+      if (pct) pct.textContent = Math.round(prog) + '%';
+    }
+  }, 700);
+
+  const submitTime = new Date();
+  const totalSeconds = Math.round((Date.now() - state.startTimeMs) / 1000);
+
+  const hp = document.getElementById('hp_field');
+  const hpVal = hp ? hp.value : '';
+
+  // Serialize question-picker objects into readable strings before submitting
+  const serializedAnswers = {};
+  for (const [k, v] of Object.entries(state.answers)) {
+    if (v && typeof v === 'object' && !Array.isArray(v)) {
+      const item = getItem(k);
+      const mode = item && item.mode ? item.mode : 'reason';
+      serializedAnswers[k] = serializePickerData(v, mode);
+    } else {
+      serializedAnswers[k] = v;
+    }
+  }
+
+  const payload = {
+    hp_field: hpVal,
+    clientStartTime: new Date(state.startTimeMs).toISOString(),
+    clientSubmitTime: submitTime.toISOString(),
+    totalSeconds: totalSeconds,
+    userAgent: (navigator.userAgent || '').substring(0, 200),
+    answers: serializedAnswers
+  };
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 30000);
+
+  try {
+    const res = await fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.message || ('Server error ' + res.status));
+    if (data.status === 'error') throw new Error(data.message || 'Server menolak data.');
+
+    // Success
+    clearInterval(progInt);
+    const fg  = document.getElementById('prog-fg');
+    const pct = document.getElementById('prog-pct');
+    if (fg)  fg.style.width = '100%';
+    if (pct) pct.textContent = '100%';
+    clearDraft();
+    setTimeout(showSuccessPage, 500);
+  } catch (err) {
+    clearTimeout(timeoutId);
+    clearInterval(progInt);
+    const wrap = document.getElementById('submit-progress');
+    if (wrap) wrap.remove();
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = 'Kirim Jawaban';
+    }
+    const msg = err && err.message ? err.message : 'Terjadi kesalahan saat mengirim.';
+    showAlert('Gagal Mengirim', msg + '\n\nPastikan koneksi internet stabil dan coba lagi sebentar.', '❌');
+  }
+}
+
+function showSuccessPage() {
+  const app = document.getElementById('app-container');
+  const closing = CLOSING_TEXT.split(/\n\n+/).map(p => `<p style="margin-bottom:14px">${escapeHTML(p)}</p>`).join('');
+  app.innerHTML = `
+    <div class="wrap" style="min-height:80vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; animation:panelIn .6s cubic-bezier(.2,.8,.2,1);">
+      <div style="display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; margin-bottom:26px; background:var(--surface); border:1px solid var(--border); border-radius:14px; font-size:26px; color:var(--green); box-shadow:var(--sh-md); font-family:var(--font-sans)">✓</div>
+      <div class="eyebrow" style="margin-bottom:18px">SUBMISSION_RECEIVED</div>
+      <h1 style="margin-bottom:18px; font-size:clamp(1.6rem, 4.5vw, 2.2rem); font-weight:500; letter-spacing:-.03em; font-family:var(--font-sans)">Terima kasih telah mengisi survei.</h1>
+      <div style="color:var(--ink2); max-width:560px; line-height:1.7; font-size:14.5px; margin-bottom:32px; letter-spacing:-.005em; font-family:var(--font-sans)">
+        ${closing}
+      </div>
+      <button onclick="window.location.reload()" style="padding:12px 22px; background:var(--bg-2); color:var(--ink); border:1px solid var(--border); border-radius:8px; font-weight:500; cursor:pointer; font-size:14px; transition:background .15s, border-color .15s; font-family:var(--font-sans); letter-spacing:-.005em" onmouseover="this.style.background='var(--surface)'; this.style.borderColor='var(--border-2)'" onmouseout="this.style.background='var(--bg-2)'; this.style.borderColor='var(--border)'">Tutup halaman</button>
+    </div>
+  `;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   BOOT
+   ──────────────────────────────────────────────────────────────────────── */
+
+function boot() {
+  renderHeader();
+  const draft = loadDraftIfAny();
+  if (draft) {
+    document.getElementById('draft-modal').classList.add('show');
+    document.getElementById('draft-continue').onclick = () => {
+      applyDraft(draft);
+      document.getElementById('draft-modal').classList.remove('show');
+      renderStepsNav();
+      renderStep();
+      setHeaderDescState(state.step === 0);
+    };
+    document.getElementById('draft-discard').onclick = () => {
+      clearDraft();
+      document.getElementById('draft-modal').classList.remove('show');
+      state.startTimeMs = Date.now();
+      renderStepsNav();
+      renderStep();
+      setHeaderDescState(true);
+    };
+  } else {
+    state.startTimeMs = Date.now();
+    renderStepsNav();
+    renderStep();
+    setHeaderDescState(true);
+  }
+}
+
+boot();
+
+});
+</script>
+</body>
+</html>
