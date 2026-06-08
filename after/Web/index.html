@@ -2078,10 +2078,11 @@ async function doSubmit() {
   }
 
   // Normalize display-only Unicode → plain ASCII in submitted answer values
+  // ≥ = ≥ (greater-than-or-equal), – = – (en-dash)
   const ASCII_FIELDS = ['C1', 'C2', 'D2', 'D3'];
   for (const fid of ASCII_FIELDS) {
     if (typeof serializedAnswers[fid] === 'string') {
-      serializedAnswers[fid] = serializedAnswers[fid].replace(/≥/g, '>=').replace(/–/g, '-');
+      serializedAnswers[fid] = serializedAnswers[fid].split(String.fromCharCode(8805)).join('>=').split(String.fromCharCode(8211)).join('-');
     }
   }
 
