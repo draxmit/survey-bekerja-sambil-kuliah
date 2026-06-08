@@ -2077,6 +2077,14 @@ async function doSubmit() {
     }
   }
 
+  // Normalize display-only Unicode → plain ASCII in submitted answer values
+  const ASCII_FIELDS = ['C1', 'C2', 'D2', 'D3'];
+  for (const fid of ASCII_FIELDS) {
+    if (typeof serializedAnswers[fid] === 'string') {
+      serializedAnswers[fid] = serializedAnswers[fid].replace(/≥/g, '>=').replace(/–/g, '-');
+    }
+  }
+
   const payload = {
     hp_field: hpVal,
     clientStartTime: new Date(state.startTimeMs).toISOString(),
